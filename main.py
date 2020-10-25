@@ -15,6 +15,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnSalir.clicked.connect(events.Eventos.salir)
         var.ui.btnAceptar_2.clicked.connect(events.Eventos.valido)
 
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()

@@ -29,7 +29,7 @@ class Ui_Proyecto1(object):
         font.setPointSize(12)
         self.lblSaludo.setFont(font)
         self.lblSaludo.setText("")
-        self.lblSaludo.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lblSaludo.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.lblSaludo.setObjectName("lblSaludo")
         self.btnAceptar = QtWidgets.QPushButton(self.centralwidget)
         self.btnAceptar.setGeometry(QtCore.QRect(540, 300, 131, 51))
