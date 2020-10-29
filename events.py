@@ -7,7 +7,7 @@ class Eventos:
 
     def saludo(self):
         try:
-            var.ui.lblSaludo.setText('Surprise motherfucker ¡¡')
+            var.ui.lblSaludo.setText('Surprise mothrfckr ¡¡')
         except Exception as error:
             print('Error: %s' % str(error))
 

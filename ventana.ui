@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>60</y>
+      <y>50</y>
       <width>211</width>
       <height>51</height>
      </rect>
@@ -74,6 +74,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.483, y1:0.0454545, x2:0.494, y2:1, stop:0 rgba(0, 142, 218, 255), stop:1 rgba(255, 255, 255, 255));</string>
     </property>
     <property name="text">
      <string>XESTIÓN CLIENTES</string>
