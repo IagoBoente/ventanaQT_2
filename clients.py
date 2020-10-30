@@ -1,3 +1,5 @@
+import var
+
 class Clientes:
 
     def validardni(dni):
@@ -17,3 +19,30 @@ class Clientes:
         except:
             print("error en la app")
             return None
+    def selSexo(self):
+        try:
+            if var.ui.rbtFemenino.isChecked():
+                print('has elegido femenino')
+            if var.ui.rbtMasculino.isChecked():
+                print('has elegido masculino')
+        except Exception as error:
+            print('Error:%s'% str(error))
+
+    def selPago(self):
+        try:
+            if var.ui.chkEfectivo.isChecked():
+                print("Pagas con efectivo")
+            if var.ui.chkTarjeta.isChecked():
+                print("Pagas con tarjeta")
+            if var.ui.chkTransfer.isChecked():
+                print("Pagas con transferecia")
+        except Exception as error:
+            print('Error:%s'% str(error))
+
+    def selProv(prov):
+        try:
+            print('Has selccionado la provincia de ', prov)
+            return prov
+        except Exception as error:
+            print('Error:%s' % str(error))
+

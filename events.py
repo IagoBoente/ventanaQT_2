@@ -31,3 +31,10 @@ class Eventos:
 
         except Exception as error:
             print('Error: %s' % str(error))
+    def cargarProv(self):
+        try:
+            prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
+            for i in prov:
+                var.ui.cbProvincia.addItem(i)
+        except Exception as error:
+            print('Error: %s' % str(error))
