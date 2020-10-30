@@ -31,6 +31,7 @@ class Main(QtWidgets.QMainWindow):
         '''Llamada a modulos iniciales'''
         events.Eventos.cargarProv(self)
 
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
