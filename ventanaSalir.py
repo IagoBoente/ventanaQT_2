@@ -15,6 +15,7 @@ class Ui_btnBox(object):
     def setupUi(self, btnBox):
         btnBox.setObjectName("btnBox")
         btnBox.resize(400, 300)
+        btnBox.setModal(True)
         self.buttonBox = QtWidgets.QDialogButtonBox(btnBox)
         self.buttonBox.setGeometry(QtCore.QRect(110, 140, 161, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -44,4 +45,4 @@ class Ui_btnBox(object):
         _translate = QtCore.QCoreApplication.translate
         btnBox.setWindowTitle(_translate("btnBox", "Dialog"))
         self.lblMenSalir.setText(_translate("btnBox", "¿Está seguro de querer salir?"))
-
+import avisoSalir_rc

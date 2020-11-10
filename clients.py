@@ -1,3 +1,5 @@
+from PyQt5 import QtWidgets
+
 import var
 
 class Clientes:
@@ -21,28 +23,90 @@ class Clientes:
             return None
     def selSexo(self):
         try:
+
             if var.ui.rbtFemenino.isChecked():
-                print('has elegido femenino')
+                var.sex = 'Mujer'
             if var.ui.rbtMasculino.isChecked():
-                print('has elegido masculino')
+                var.sex = 'Hombre'
         except Exception as error:
             print('Error:%s'% str(error))
 
     def selPago(self):
         try:
             if var.ui.chkEfectivo.isChecked():
-                print("Pagas con efectivo")
+                var.pay.append('Efectivo')
             if var.ui.chkTarjeta.isChecked():
-                print("Pagas con tarjeta")
+                var.pay.append('Tarjeta')
             if var.ui.chkTransfer.isChecked():
-                print("Pagas con transferecia")
+                var.pay.append('Transferencia')
         except Exception as error:
             print('Error:%s'% str(error))
 
     def selProv(prov):
         try:
-            print('Has selccionado la provincia de ', prov)
-            return prov
+            global vpro
+            vpro = prov
+            '''return prov'''
         except Exception as error:
+            print('Error:%s' % str(error))
+
+    '''
+        Abrir la ventana calendario
+        '''
+
+    def abrirCalendar(self):
+        try:
+            var.dlgcalendar.show()
+        except Exception as error:
+            print('Error: %s ' % str(error))
+
+    '''
+        Este módulo se ejecuta cuando clickeamos en un día del calendar, es decir, clicked.connect de calendar
+        '''
+
+    def cargarFecha(qDate):
+        try:
+            data = ('{0}/{1}/{2}'.format(qDate.day(), qDate.month(), qDate.year()))
+            var.ui.ltCalendar.setText(str(data))
+            var.dlgcalendar.hide()
+        except Exception as error:
+            print('Error cargar fecha: %s ' % str(error))
+    def showClientes(self):
+        try:
+            '''cargar clientes de la tabla
+                :return: none
+            '''
+            '''preparamos el registro'''
+            newcli = []
+            tablaCli = []  # sera lo que cargamos en la tabla
+            client = [var.ui.ltDNI, var.ui.editApel, var.ui.editNome, var.ui.editClialta, var.ui.editDir]
+            k = 0
+
+            for i in client:
+                newcli.append(i.text())  # cargamos los valores que hay en los editline
+                if k < 3:
+                    tablaCli.append(i.text())
+                    k += 1
+            newcli.append(vpro)
+            #elimina duplicados
+            var.pay = set(var.pay)
+
+            for j in var.pay:
+                newcli.append(j)
+            newcli.append(var.sex)
+            print(newcli)
+            print(tablaCli)
+            #aqui empieza como trabajar con la TableWidget
+            row = 0
+            column = 0
+            var.ui.tablaCli.insertRow(row)
+            for registro in tablaCli:
+                cell = QtWidgets.QTableWidgetItem(registro)
+                var.ui.tablaCli.setItem(row,column,cell)
+                column += 1
+
+
+        except Exception as error:
+
             print('Error:%s' % str(error))
 

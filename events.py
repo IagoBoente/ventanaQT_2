@@ -11,9 +11,14 @@ class Eventos:
         except Exception as error:
             print('Error: %s' % str(error))
 
-    def salir(self):
+    def salir(event):
         try:
-            sys.exit()
+            var.avisoSalir.show()
+            if var.avisoSalir.exec_():
+                sys.exit()
+            else:
+                var.avisoSalir.hide()
+                event.ignore()  # necesario para que ignore X de la ventana
         except Exception as error:
             print('Error: %s' % str(error))
 
@@ -31,6 +36,7 @@ class Eventos:
 
         except Exception as error:
             print('Error: %s' % str(error))
+
     def cargarProv(self):
         try:
             prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
@@ -38,3 +44,5 @@ class Eventos:
                 var.ui.cbProvincia.addItem(i)
         except Exception as error:
             print('Error: %s' % str(error))
+
+
