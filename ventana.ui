@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>838</width>
-    <height>836</height>
+    <width>873</width>
+    <height>830</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -38,440 +38,610 @@
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
-      <width>789</width>
-      <height>276</height>
+      <y>20</y>
+      <width>841</width>
+      <height>761</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="5" column="8" colspan="5">
-      <widget class="QLineEdit" name="ltNombre"/>
-     </item>
-     <item row="5" column="0" colspan="2">
-      <widget class="QLabel" name="lblApellidos">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Apellidos:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="8" colspan="5">
-      <widget class="QComboBox" name="cbProvincia"/>
-     </item>
-     <item row="6" column="0" colspan="2">
-      <widget class="QLabel" name="lblDireccion">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Direccion:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="8" colspan="3">
-      <widget class="QLineEdit" name="ltCalendar">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="6" colspan="2">
-      <widget class="QLabel" name="lblNombre_3">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Fecha alta:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="9" colspan="4">
-      <widget class="QLabel" name="lblSaludo">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1" colspan="2">
-      <widget class="QRadioButton" name="rbtFemenino">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Femenino</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="lblSexo">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sexo:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="lblDNI">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>DNI:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="3">
-      <widget class="QRadioButton" name="rbtMasculino">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Masculino</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="2" colspan="3">
-      <widget class="QLineEdit" name="ltDireccion"/>
-     </item>
-     <item row="6" column="6" colspan="2">
-      <widget class="QLabel" name="lblNombre_2">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Provincia:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="2" colspan="3">
-      <widget class="QLineEdit" name="ltApellidos"/>
-     </item>
-     <item row="3" column="11">
-      <widget class="QPushButton" name="btnCalendar">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="8" colspan="2">
-      <widget class="QCheckBox" name="chkEfectivo">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Efectivo</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="6" colspan="2">
-      <widget class="QLabel" name="lblNombre">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Nombre:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="10" colspan="2">
-      <widget class="QCheckBox" name="chkTarjeta">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Tarjeta</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="10" colspan="3">
-      <widget class="QPushButton" name="btnAceptar">
-       <property name="text">
-        <string>Boton</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="5" colspan="3">
-      <widget class="QLabel" name="lblSexo_2">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Metodos de pago:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2" colspan="3">
-      <widget class="QLineEdit" name="ltDNI">
-       <property name="tabletTracking">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="12">
-      <widget class="QCheckBox" name="chkTransfer">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Transfer</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="4" colspan="5">
-      <widget class="QLabel" name="lblTitulo">
-       <property name="font">
-        <font>
-         <family>Tahoma</family>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:0.483, y1:0.0454545, x2:0.494, y2:1, stop:0 rgba(0, 142, 218, 255), stop:1 rgba(255, 255, 255, 255));</string>
-       </property>
-       <property name="text">
-        <string>XESTIÓN CLIENTES</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="13">
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="5" colspan="3">
-      <widget class="QLabel" name="lblValido">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="btnAceptar_2">
-    <property name="geometry">
-     <rect>
-      <x>256</x>
-      <y>750</y>
-      <width>148</width>
-      <height>27</height>
-     </rect>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-    <property name="font">
-     <font>
-      <family>Tahoma</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Aceptar</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSalir">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>750</y>
-      <width>165</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Tahoma</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Salir</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTitulo_2">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>360</y>
-      <width>276</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Tahoma</family>
-      <pointsize>16</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.483, y1:0.0454545, x2:0.494, y2:1, stop:0 rgba(0, 142, 218, 255), stop:1 rgba(255, 255, 255, 255));</string>
-    </property>
-    <property name="text">
-     <string>LISTAXE CLIENTES</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>29</x>
-      <y>410</y>
-      <width>791</width>
-      <height>321</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>789</width>
-       <height>319</height>
-      </rect>
-     </property>
-     <widget class="QTableWidget" name="tableCli">
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Clientes</string>
+     </attribute>
+     <widget class="QRadioButton" name="rbtMasculino">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>771</width>
-        <height>301</height>
+        <x>171</x>
+        <y>180</y>
+        <width>87</width>
+        <height>20</height>
        </rect>
       </property>
-      <column>
-       <property name="text">
-        <string>DNI</string>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Masculino</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSexo">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>180</y>
+        <width>46</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Sexo:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSaludo">
+      <property name="geometry">
+       <rect>
+        <x>485</x>
+        <y>4</y>
+        <width>231</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltApellidos">
+      <property name="geometry">
+       <rect>
+        <x>105</x>
+        <y>110</y>
+        <width>218</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>36</y>
+        <width>801</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTitulo_2">
+      <property name="geometry">
+       <rect>
+        <x>275</x>
+        <y>304</y>
+        <width>276</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.483, y1:0.0454545, x2:0.494, y2:1, stop:0 rgba(0, 142, 218, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string>LISTAXE CLIENTES</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltCalendar">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>74</y>
+        <width>218</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCalendar">
+      <property name="geometry">
+       <rect>
+        <x>704</x>
+        <y>74</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblMetodos">
+      <property name="geometry">
+       <rect>
+        <x>329</x>
+        <y>180</y>
+        <width>145</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Metodos de pago:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblValido">
+      <property name="geometry">
+       <rect>
+        <x>335</x>
+        <y>74</y>
+        <width>16</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDNI">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>74</y>
+        <width>37</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>DNI:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblProvincia">
+      <property name="geometry">
+       <rect>
+        <x>379</x>
+        <y>145</y>
+        <width>81</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Provincia:</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbtFemenino">
+      <property name="geometry">
+       <rect>
+        <x>68</x>
+        <y>180</y>
+        <width>85</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Femenino</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTitulo">
+      <property name="geometry">
+       <rect>
+        <x>264</x>
+        <y>5</y>
+        <width>205</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.483, y1:0.0454545, x2:0.494, y2:1, stop:0 rgba(0, 142, 218, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string>XESTIÓN CLIENTES</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFecha">
+      <property name="geometry">
+       <rect>
+        <x>379</x>
+        <y>74</y>
+        <width>90</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Fecha alta:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblApellidos">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>110</y>
+        <width>81</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Apellidos:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblNombre">
+      <property name="geometry">
+       <rect>
+        <x>379</x>
+        <y>110</y>
+        <width>70</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Nombre:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnSalir">
+      <property name="geometry">
+       <rect>
+        <x>445</x>
+        <y>694</y>
+        <width>165</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Salir</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbProvincia">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>145</y>
+        <width>104</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>294</y>
+        <width>787</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDireccion">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>145</y>
+        <width>81</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Direccion:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltNombre">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>110</y>
+        <width>218</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltDireccion">
+      <property name="geometry">
+       <rect>
+        <x>105</x>
+        <y>145</y>
+        <width>218</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chkTransfer">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>180</y>
+        <width>77</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Transfer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAceptar_2">
+      <property name="geometry">
+       <rect>
+        <x>241</x>
+        <y>694</y>
+        <width>148</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Aceptar</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltDNI">
+      <property name="geometry">
+       <rect>
+        <x>105</x>
+        <y>74</y>
+        <width>218</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="tabletTracking">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAceptar">
+      <property name="geometry">
+       <rect>
+        <x>629</x>
+        <y>206</y>
+        <width>75</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Boton</string>
+      </property>
+     </widget>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>14</x>
+        <y>354</y>
+        <width>791</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>789</width>
+         <height>319</height>
+        </rect>
        </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>APELLIDOS</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>NOMBRE</string>
-       </property>
-      </column>
+       <widget class="QTableWidget" name="tableCli">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>771</width>
+          <height>301</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <column>
+         <property name="text">
+          <string>DNI</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>APELLIDOS</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>NOMBRE</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QCheckBox" name="chkTarjeta">
+      <property name="geometry">
+       <rect>
+        <x>629</x>
+        <y>180</y>
+        <width>69</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tarjeta</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chkEfectivo">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>180</y>
+        <width>77</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Efectivo</string>
+      </property>
      </widget>
     </widget>
-   </widget>
-   <widget class="Line" name="line_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>350</y>
-      <width>787</width>
-      <height>3</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="tablaCli">
@@ -479,7 +649,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>838</width>
+     <width>873</width>
      <height>27</height>
     </rect>
    </property>
@@ -521,4 +691,7 @@
   <include location="img/calendar.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="grpbtnSex"/>
+ </buttongroups>
 </ui>

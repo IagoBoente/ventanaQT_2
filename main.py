@@ -27,6 +27,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnAceptar.clicked.connect(events.Eventos.saludo)
         var.ui.btnSalir.clicked.connect(events.Eventos.salir)
         var.ui.btnAceptar_2.clicked.connect(events.Eventos.valido)
+        var.ui.btnAceptar_2.clicked.connect(clients.Clientes.showClientes)
         var.ui.btnCalendar.clicked.connect(clients.Clientes.abrirCalendar)
 
         for i in var.rbtsex:
@@ -34,6 +35,8 @@ class Main(QtWidgets.QMainWindow):
         for i in var.chkpago:
             i.stateChanged.connect(clients.Clientes.selPago)
         var.ui.cbProvincia.activated[str].connect(clients.Clientes.selProv)
+        var.ui.tableCli.clicked.connect(clients.Clientes.cargarCliente)
+        var.ui.tableCli.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         '''Llamada a modulos iniciales'''
         events.Eventos.cargarProv(self)
