@@ -1,5 +1,6 @@
 import sys
 import clients
+import conexion
 import events
 import var
 from datetime import datetime
@@ -37,6 +38,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.cbProvincia.activated[str].connect(clients.Clientes.selProv)
         var.ui.tableCli.clicked.connect(clients.Clientes.cargarCliente)
         var.ui.tableCli.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        conexion.Conexion.db_connect(var.filebd)
 
         '''Llamada a modulos iniciales'''
         events.Eventos.cargarProv(self)

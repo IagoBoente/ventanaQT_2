@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 
+import conexion
 import var
 
 
@@ -35,12 +36,16 @@ class Clientes:
 
     def selPago(self):
         try:
-            if var.ui.chkEfectivo.isChecked():
-                var.pay.append('Efectivo')
-            if var.ui.chkTarjeta.isChecked():
-                var.pay.append('Tarjeta')
-            if var.ui.chkTransfer.isChecked():
-                var.pay.append('Transferencia')
+            var.pay = []
+            for i, data in enumerate(var.ui.grpbtnPay.buttons()):
+                if var.ui.chkEfectivo.isChecked() and i == 0:
+                    var.pay.append('Efectivo')
+                if var.ui.chkTarjeta.isChecked() and i == 1:
+                    var.pay.append('Tarjeta')
+                if var.ui.chkTransfer.isChecked() and i == 2:
+                    var.pay.append('Transferencia')
+            print(var.pay)
+            return var.pay
         except Exception as error:
             print('Error:%s' % str(error))
 
@@ -93,7 +98,22 @@ class Clientes:
             newcli.append(vpro)
             # elimina duplicados
             var.pay = set(var.pay)
-
+            var.pay2 = Clientes.selPago()
+            newcli.append(var.sex)
+            newcli.append((var.pay2))
+            if client:
+                row = 0  # posicion de la fila, problrma: coloca al ultimo como primero en cada click
+                column = 0  # posicion de la columna
+                var.ui.tableCli.insertRow(row)  # insertamos una fila nueva con cada click de boton
+                for registro in tableCli:
+                    cell = QtWidgets.QTableWidgetItem(registro)
+                    var.ui.tableCli.setItem(row, column, cell)
+                    column += 1
+                conexion.Conexion.cargarCli(newcli)
+            else:
+                print('Faltan datos')
+                Clientes.limpiarCli(client,var.rbtsex, var.chkpago)
+            '''
             for j in var.pay:
                 newcli.append(j)
             newcli.append(var.sex)
@@ -107,7 +127,7 @@ class Clientes:
                 cell = QtWidgets.QTableWidgetItem(registro)
                 var.ui.tableCli.setItem(row, column, cell)
                 column += 1
-
+            '''
 
         except Exception as error:
             print('Error:%s' % str(error))
