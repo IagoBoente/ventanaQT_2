@@ -7,7 +7,7 @@ class Eventos:
 
     def saludo(self):
         try:
-            var.ui.lblSaludo.setText('Surprise mothrfckr ¡¡')
+            var.ui.lblstatus.setText('Surprise mothrfckr ¡¡')
         except Exception as error:
             print('Error: %s' % str(error))
 
@@ -44,5 +44,11 @@ class Eventos:
                 var.ui.cbProvincia.addItem(i)
         except Exception as error:
             print('Error: %s' % str(error))
+
+    def AbrirDir(self):
+        try:
+            var.filedlgabrir.show()
+        except Exception as error:
+            print('Error abrir explorador: %s' %str(error))
 
 

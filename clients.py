@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets
 
 import conexion
 import var
+import events
 
 
 class Clientes:
@@ -38,13 +39,12 @@ class Clientes:
         try:
             var.pay = []
             for i, data in enumerate(var.ui.grpbtnPay.buttons()):
-                if var.ui.chkEfectivo.isChecked() and i == 0:
-                    var.pay.append('Efectivo')
-                if var.ui.chkTarjeta.isChecked() and i == 1:
-                    var.pay.append('Tarjeta')
-                if var.ui.chkTransfer.isChecked() and i == 2:
+                if data.isChecked() and i == 0:
                     var.pay.append('Transferencia')
-            print(var.pay)
+                if data.isChecked() and i == 1:
+                    var.pay.append('Tarjeta')
+                if data.isChecked() and i == 2:
+                    var.pay.append('Efectivo')
             return var.pay
         except Exception as error:
             print('Error:%s' % str(error))
@@ -79,29 +79,56 @@ class Clientes:
         except Exception as error:
             print('Error cargar fecha: %s ' % str(error))
 
-    def showClientes(self):
-        try:
-            '''cargar clientes de la table
-                :return: none
-            '''
-            '''preparamos el registro'''
-            newcli = []
-            tableCli = []  # sera lo que cargamos en la table
-            client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltCalendar, var.ui.ltDireccion]
-            k = 0
+    def altaClientes(self):
+        if var.ui.lblValido.text() == 'V':
+            var.ui.lblstatus.setText('DNI válido')
+            try:
+                '''cargar clientes de la table
+                    :return: none
+                '''
 
-            for i in client:
-                newcli.append(i.text())  # cargamos los valores que hay en los editline
-                if k < 3:
-                    tableCli.append(i.text())
-                    k += 1
-            newcli.append(vpro)
-            # elimina duplicados
-            var.pay = set(var.pay)
-            var.pay2 = Clientes.selPago()
-            newcli.append(var.sex)
-            newcli.append((var.pay2))
-            if client:
+                '''preparamos el registro'''
+
+                newcli = []
+                tableCli = []  # sera lo que cargamos en la table
+                client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltDireccion,var.ui.ltCalendar]
+                '''client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltCalendar, var.ui.ltDireccion]
+                '''
+                k = 0
+
+                for i in client:
+                    newcli.append(i.text())  # cargamos los valores que hay en los editline
+                    if k < 3:
+                        tableCli.append(i.text())
+                        k += 1
+                newcli.append(var.ui.cbProvincia.currentText())
+                # elimina duplicados
+                var.pay = set(var.pay)
+                var.pay2 = Clientes.selPago(self)
+                newcli.append(var.sex)
+                newcli.append(var.pay2)
+                newcli.append(var.ui.spinEdad.value())
+                if client:
+                    row = 0  # posicion de la fila, problrma: coloca al ultimo como primero en cada click
+                    column = 0  # posicion de la columna
+                    var.ui.tableCli.insertRow(row)  # insertamos una fila nueva con cada click de boton
+                    for registro in tableCli:
+                        cell = QtWidgets.QTableWidgetItem(registro)
+                        var.ui.tableCli.setItem(row, column, cell)
+                        column += 1
+                    conexion.Conexion.cargarCli(newcli)
+
+                else:
+                    print('Faltan datos')
+                    Clientes.limpiarCli(self)
+
+                '''
+                for j in var.pay:
+                    newcli.append(j)
+                newcli.append(var.sex)
+                print(newcli)
+                print(tableCli)
+                # aqui empieza como trabajar con la TableWidget
                 row = 0  # posicion de la fila, problrma: coloca al ultimo como primero en cada click
                 column = 0  # posicion de la columna
                 var.ui.tableCli.insertRow(row)  # insertamos una fila nueva con cada click de boton
@@ -109,40 +136,49 @@ class Clientes:
                     cell = QtWidgets.QTableWidgetItem(registro)
                     var.ui.tableCli.setItem(row, column, cell)
                     column += 1
-                conexion.Conexion.cargarCli(newcli)
-            else:
-                print('Faltan datos')
-                Clientes.limpiarCli(client,var.rbtsex, var.chkpago)
-            '''
-            for j in var.pay:
-                newcli.append(j)
-            newcli.append(var.sex)
-            print(newcli)
-            print(tableCli)
-            # aqui empieza como trabajar con la TableWidget
-            row = 0  # posicion de la fila, problrma: coloca al ultimo como primero en cada click
-            column = 0  # posicion de la columna
-            var.ui.tableCli.insertRow(row)  # insertamos una fila nueva con cada click de boton
-            for registro in tableCli:
-                cell = QtWidgets.QTableWidgetItem(registro)
-                var.ui.tableCli.setItem(row, column, cell)
-                column += 1
-            '''
+                '''
+            except Exception as error:
+                print('Error:%s' % str(error))
+        else:
+            var.ui.lblstatus.setText('Error al validar DNI')
+
+    def limpiarCli(self):
+        client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltDireccion, var.ui.ltCalendar]
+        try:
+            for i in range(len(client)):
+                client[i].setText('')
+            var.ui.grpbtnSex.setExclusive(False)
+            var.ui.grpbtnPay.setExclusive(False)
+            for dato in var.rbtsex:
+                dato.setChecked(False)
+            for datos in var.chkpago:
+                datos.setChecked(False)
+            var.ui.cbProvincia.setCurrentIndex(0)
+            var.ui.lblValido.setText('')
+            var.ui.lblstatus.setText('')
+            var.ui.lblCodcli.setText('')
+            var.ui.spinEdad.setValue(0)
 
         except Exception as error:
             print('Error:%s' % str(error))
 
-    def limpiarCli(listaeditCli, listaRbtsex, listaChkpay):
+    def limpiarTodo(self):
+        client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltDireccion, var.ui.ltCalendar]
         try:
-            for i in range(len(listaeditCli)):
-                listaeditCli[i].setText('')
+            for i in range(len(client)):
+                client[i].setText('')
             var.ui.grpbtnSex.setExclusive(False)
-            for dato in listaRbtsex:
+            var.ui.grpbtnPay.setExclusive(False)
+            for dato in var.rbtsex:
                 dato.setChecked(False)
-            for data in listaChkpay:
-                data.setChecked(False)
+            for datos in var.chkpago:
+                datos.setChecked(False)
             var.ui.cbProvincia.setCurrentIndex(0)
             var.ui.lblValido.setText('')
+            var.ui.lblstatus.setText('')
+            var.ui.lblCodcli.setText('')
+            var.ui.spinEdad.setValue(0)
+            var.ui.tableCli.setRowCount(0)
 
         except Exception as error:
             print('Error:%s' % str(error))
@@ -150,12 +186,54 @@ class Clientes:
     def cargarCliente(self):
         try:
             fila = var.ui.tableCli.selectedItems()
-            client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre]
             if fila:
                 fila = [dato.text() for dato in fila]
             print(fila)
-            i = 0
-            for i, dato in enumerate(client):
-                dato.setText(fila[i])
+            var.ui.ltDNI.setText(fila[0])
+            conexion.Conexion.mostrarClientes2(self)
+            events.Eventos.valido(self)
         except Exception as error:
             print('Error:%s' % str(error))
+
+    def bajaCliente(self):
+        try:
+            dni = var.ui.ltDNI.text()
+            conexion.Conexion.bajaCli(dni)
+            Clientes.limpiarCli(self)
+            var.ui.lblstatus.setText('Cliente con dni: ' + dni + ' dado de baja')
+            conexion.Conexion.mostrarClientes(self)
+        except Exception as error:
+            print('Error:%s' % str(error))
+
+    def modifCliente(self):
+        try:
+            newdata = []
+            client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre,  var.ui.ltDireccion,var.ui.ltCalendar]
+            for i in client:
+                newdata.append(i.text())
+            newdata.append(var.ui.cbProvincia.currentText())
+            newdata.append(var.sex)
+            newdata.append(var.pay)
+            newdata.append(var.ui.spinEdad.value())
+            cod = var.ui.lblCodcli.text()
+            conexion.Conexion.modifCli(cod, newdata)
+            conexion.Conexion.mostrarClientes(self)
+        except Exception as error:
+            print('Error al cargar clientes:%s' % str(error))
+
+    def reloadCli(self):
+        try:
+            Clientes.limpiarTodo(self)
+            Clientes.cargarCliente(self)
+            conexion.Conexion.mostrarClientes(self)
+            var.ui.lblstatus.setText('Datos recargados')
+        except Exception as error:
+            print('Error al recargar clientes%s' % str(error))
+
+    def buscarCli(self):
+        try:
+            dni = var.ui.ltDNI.text()
+            Clientes.limpiarTodo(self)
+            conexion.Conexion.buscaCli(dni)
+        except Exception as error:
+            print('Error al buscar cliente %s' % str(error))

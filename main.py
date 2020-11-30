@@ -3,10 +3,15 @@ import clients
 import conexion
 import events
 import var
-from datetime import datetime
+from datetime import datetime, date
 from ventana import *
 from ventanaSalir import *
 from vencalendar import *
+from PyQt5.QtWidgets import QMainWindow, QLabel
+from PyQt5.QtWidgets import QGridLayout, QWidget, QDesktopWidget
+import locale
+
+locale.setlocale(locale.LC_ALL, 'es-ES')
 
 
 class Main(QtWidgets.QMainWindow):
@@ -15,21 +20,38 @@ class Main(QtWidgets.QMainWindow):
         super(Main, self).__init__()
         var.ui = Ui_Proyecto1()
         var.ui.setupUi(self)
+
         var.ui.centralwidget.show()
         var.avisoSalir = DialogSalir()
         var.dlgcalendar = DialogCalendar()
+        var.filedlgabrir = FileDialogAbrir()
+
+        '''Centrar ventana'''
+        fg = var.ui.tabWidget.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        fg.moveCenter(cp)
+        var.ui.tabWidget.move(fg.topLeft())
+        ''''''
 
         '''coleccion de datos'''
         var.rbtsex = (var.ui.rbtFemenino, var.ui.rbtMasculino)
-        var.chkpago = (var.ui.chkEfectivo, var.ui.chkTransfer, var.ui.chkTarjeta)
+        var.chkpago = (var.ui.chkEfectivo, var.ui.chkTarjeta, var.ui.chkTransfer)
 
         '''acciones'''
         var.ui.actionSalir_2.triggered.connect(events.Eventos.salir)
-        var.ui.btnAceptar.clicked.connect(events.Eventos.saludo)
         var.ui.btnSalir.clicked.connect(events.Eventos.salir)
+        var.ui.toolbarSalir.triggered.connect(events.Eventos.salir)
         var.ui.btnAceptar_2.clicked.connect(events.Eventos.valido)
-        var.ui.btnAceptar_2.clicked.connect(clients.Clientes.showClientes)
+        var.ui.ltDNI.textEdited.connect(events.Eventos.valido)
         var.ui.btnCalendar.clicked.connect(clients.Clientes.abrirCalendar)
+        var.ui.btnAlta.clicked.connect(clients.Clientes.altaClientes)
+        var.ui.btnLimpiar.clicked.connect(clients.Clientes.limpiarTodo)
+        var.ui.btnEliminar.clicked.connect(clients.Clientes.bajaCliente)
+        var.ui.btnModificar.clicked.connect(clients.Clientes.modifCliente)
+        var.ui.btnBuscar.clicked.connect(clients.Clientes.buscarCli)
+        var.ui.btnRecargar.clicked.connect(clients.Clientes.reloadCli)
+        var.ui.toolbarAbrir.triggered.connect(events.Eventos.AbrirDir)
+        var.ui.actionAbrir.triggered.connect(events.Eventos.AbrirDir)
 
         for i in var.rbtsex:
             i.toggled.connect(clients.Clientes.selSexo)
@@ -39,8 +61,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tableCli.clicked.connect(clients.Clientes.cargarCliente)
         var.ui.tableCli.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         conexion.Conexion.db_connect(var.filebd)
+        conexion.Conexion.mostrarClientes(self)
 
         '''Llamada a modulos iniciales'''
+        var.ui.statusbar.addPermanentWidget(var.ui.lblstatus, 1)
+        var.ui.lblstatus.setText('Bienvenido a 2ºDAM')
         events.Eventos.cargarProv(self)
 
     def closeEvent(self, event):
@@ -67,9 +92,13 @@ class DialogCalendar(QtWidgets.QDialog):
         var.dlgcalendar.calendar_2.clicked.connect(clients.Clientes.cargarFecha)
 
 
+class FileDialogAbrir(QtWidgets.QFileDialog):
+    def __init__(self):
+        super(FileDialogAbrir, self).__init__()
+
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
-    window.show()
-    '''window.showFullScreen()'''
+    window.showMaximized()
     sys.exit(app.exec())
