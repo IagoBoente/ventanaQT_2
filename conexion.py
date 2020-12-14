@@ -39,6 +39,24 @@ class Conexion():
             var.ui.lblstatus.setText('Inserción fallida, pruebe a introducir datos de nuevo comprobando que el DNI no sea repetido.')
 
         Conexion.mostrarClientes(None)
+
+    def mostrarClientes(self):
+        index = 0
+        query = QtSql.QSqlQuery()
+        query.prepare('select dni, apellidos, nombre from clientes')
+        if query.exec_():
+            while query.next():
+                dni = query.value(0)
+                apellidos = query.value(1)
+                nombre = query.value(2)
+                var.ui.tableCli.setRowCount(index + 1)
+                var.ui.tableCli.setItem(index, 0, QtWidgets.QTableWidgetItem(dni))
+                var.ui.tableCli.setItem(index, 1, QtWidgets.QTableWidgetItem(apellidos))
+                var.ui.tableCli.setItem(index, 2, QtWidgets.QTableWidgetItem(nombre))
+                index += 1
+        else:
+            print("Error mostrar clientes:", query.lastError().text())
+
     def mostrarClientes2(self):
         dni = var.ui.ltDNI.text()
         query = QtSql.QSqlQuery()
@@ -79,22 +97,7 @@ class Conexion():
         else:
             print(("Error mostrar clientes:", query.lastError().text()))
 
-    def mostrarClientes(self):
-        index = 0
-        query = QtSql.QSqlQuery()
-        query.prepare('select dni, apellidos, nombre from clientes')
-        if query.exec_():
-            while query.next():
-                dni = query.value(0)
-                apellidos = query.value(1)
-                nombre = query.value(2)
-                var.ui.tableCli.setRowCount(index + 1)
-                var.ui.tableCli.setItem(index, 0, QtWidgets.QTableWidgetItem(dni))
-                var.ui.tableCli.setItem(index, 1, QtWidgets.QTableWidgetItem(apellidos))
-                var.ui.tableCli.setItem(index, 2, QtWidgets.QTableWidgetItem(nombre))
-                index += 1
-        else:
-            print("Error mostrar clientes:", query.lastError().text())
+
 
     def modifCli(codigo, newdata):
         query = QtSql.QSqlQuery()

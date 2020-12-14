@@ -6,8 +6,8 @@ import var
 from datetime import datetime, date
 from ventana import *
 from ventanaSalir import *
+from ventanaAviso import *
 from vencalendar import *
-from PyQt5.QtWidgets import QMainWindow, QLabel
 from PyQt5.QtWidgets import QGridLayout, QWidget, QDesktopWidget
 import locale
 
@@ -23,13 +23,16 @@ class Main(QtWidgets.QMainWindow):
 
         var.ui.centralwidget.show()
         var.avisoSalir = DialogSalir()
+        var.avisoAccion = DialogAccion()
         var.dlgcalendar = DialogCalendar()
         var.filedlgabrir = FileDialogAbrir()
 
         '''Centrar ventana'''
         fg = var.ui.tabWidget.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
+        tp = QDesktopWidget().availableGeometry().top()
         fg.moveCenter(cp)
+        fg.moveTop(tp+50)
         var.ui.tabWidget.move(fg.topLeft())
         ''''''
 
@@ -41,7 +44,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionSalir_2.triggered.connect(events.Eventos.salir)
         var.ui.btnSalir.clicked.connect(events.Eventos.salir)
         var.ui.toolbarSalir.triggered.connect(events.Eventos.salir)
-        var.ui.btnAceptar_2.clicked.connect(events.Eventos.valido)
         var.ui.ltDNI.textEdited.connect(events.Eventos.valido)
         var.ui.btnCalendar.clicked.connect(clients.Clientes.abrirCalendar)
         var.ui.btnAlta.clicked.connect(clients.Clientes.altaClientes)
@@ -64,12 +66,17 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.mostrarClientes(self)
 
         '''Llamada a modulos iniciales'''
-        var.ui.statusbar.addPermanentWidget(var.ui.lblstatus, 1)
+        var.ui.statusbar.addPermanentWidget(var.ui.lblstatus, 20)
+        var.ui.statusbar.addPermanentWidget(var.ui.lblstatus_2, 1)
         var.ui.lblstatus.setText('Bienvenido a 2ºDAM')
+
+        events.Eventos.MostrarFecha(self)
         events.Eventos.cargarProv(self)
 
     def closeEvent(self, event):
         events.Eventos.salir(event)
+
+
 
 
 class DialogSalir(QtWidgets.QDialog):
@@ -78,6 +85,13 @@ class DialogSalir(QtWidgets.QDialog):
         var.avisoSalir = Ui_btnBox()
         var.avisoSalir.setupUi(self)
         var.avisoSalir.buttonBox.button(QtWidgets.QDialogButtonBox.Yes).clicked.connect(events.Eventos.salir)
+
+class DialogAccion(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogAccion, self).__init__()
+        var.avisoAccion = Ui_btnBoxAccion()
+        var.avisoAccion.setupUi(self)
+        var.avisoAccion.buttonBoxAccion.button(QtWidgets.QDialogButtonBox.Yes).clicked.connect(events.Eventos.avisoAccion)
 
 
 class DialogCalendar(QtWidgets.QDialog):

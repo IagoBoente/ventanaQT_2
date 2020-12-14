@@ -27,7 +27,6 @@ class Clientes:
 
     def selSexo(self):
         try:
-
             if var.ui.rbtFemenino.isChecked():
                 var.sex = 'Mujer'
             if var.ui.rbtMasculino.isChecked():
@@ -40,11 +39,11 @@ class Clientes:
             var.pay = []
             for i, data in enumerate(var.ui.grpbtnPay.buttons()):
                 if data.isChecked() and i == 0:
-                    var.pay.append('Transferencia')
+                    var.pay.append('Efectivo')
                 if data.isChecked() and i == 1:
                     var.pay.append('Tarjeta')
                 if data.isChecked() and i == 2:
-                    var.pay.append('Efectivo')
+                    var.pay.append('Transferencia')
             return var.pay
         except Exception as error:
             print('Error:%s' % str(error))
@@ -57,7 +56,7 @@ class Clientes:
         except Exception as error:
             print('Error:%s' % str(error))
 
-    '''
+        '''
         Abrir la ventana calendario
         '''
 
@@ -67,7 +66,7 @@ class Clientes:
         except Exception as error:
             print('Error: %s ' % str(error))
 
-    '''
+        '''
         Este módulo se ejecuta cuando clickeamos en un día del calendar, es decir, clicked.connect de calendar
         '''
 
@@ -83,17 +82,11 @@ class Clientes:
         if var.ui.lblValido.text() == 'V':
             var.ui.lblstatus.setText('DNI válido')
             try:
-                '''cargar clientes de la table
-                    :return: none
-                '''
-
-                '''preparamos el registro'''
 
                 newcli = []
                 tableCli = []  # sera lo que cargamos en la table
                 client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltDireccion,var.ui.ltCalendar]
-                '''client = [var.ui.ltDNI, var.ui.ltApellidos, var.ui.ltNombre, var.ui.ltCalendar, var.ui.ltDireccion]
-                '''
+
                 k = 0
 
                 for i in client:
@@ -104,9 +97,10 @@ class Clientes:
                 newcli.append(var.ui.cbProvincia.currentText())
                 # elimina duplicados
                 var.pay = set(var.pay)
-                var.pay2 = Clientes.selPago(self)
+                #var.pay2 = Clientes.selPago(self)
                 newcli.append(var.sex)
-                newcli.append(var.pay2)
+                #newcli.append(var.pay2)
+                newcli.append(var.pay)
                 newcli.append(var.ui.spinEdad.value())
                 if client:
                     row = 0  # posicion de la fila, problrma: coloca al ultimo como primero en cada click
@@ -147,7 +141,9 @@ class Clientes:
         try:
             for i in range(len(client)):
                 client[i].setText('')
-            var.ui.grpbtnSex.setExclusive(False)
+            #var.ui.grpbtnSex.setExclusive(False)
+            var.ui.rbtFemenino.setChecked(True)
+            var.ui.rbtMasculino.setChecked(False)
             var.ui.grpbtnPay.setExclusive(False)
             for dato in var.rbtsex:
                 dato.setChecked(False)
@@ -159,6 +155,8 @@ class Clientes:
             var.ui.lblCodcli.setText('')
             var.ui.spinEdad.setValue(0)
 
+            #var.ui.tableCli.removeRow(0)
+
         except Exception as error:
             print('Error:%s' % str(error))
 
@@ -167,7 +165,9 @@ class Clientes:
         try:
             for i in range(len(client)):
                 client[i].setText('')
-            var.ui.grpbtnSex.setExclusive(False)
+            #var.ui.grpbtnSex.setExclusive(False)
+            var.ui.rbtFemenino.setChecked(True)
+            var.ui.rbtMasculino.setChecked(False)
             var.ui.grpbtnPay.setExclusive(False)
             for dato in var.rbtsex:
                 dato.setChecked(False)
@@ -196,12 +196,19 @@ class Clientes:
             print('Error:%s' % str(error))
 
     def bajaCliente(self):
+        dni = var.ui.ltDNI.text()
         try:
-            dni = var.ui.ltDNI.text()
-            conexion.Conexion.bajaCli(dni)
-            Clientes.limpiarCli(self)
-            var.ui.lblstatus.setText('Cliente con dni: ' + dni + ' dado de baja')
-            conexion.Conexion.mostrarClientes(self)
+            if len(dni) > 0:
+                aviso = events.Eventos.avisoAccion(self)
+                if aviso:
+                    conexion.Conexion.bajaCli(dni)
+                    Clientes.limpiarTodo(self)
+                    var.ui.lblstatus.setText('Cliente con dni: ' + dni + ' dado de baja')
+                    conexion.Conexion.mostrarClientes(self)
+                else:
+                    var.ui.lblstatus.setText('Eliminar cliente CANCELADO')
+            else:
+                var.ui.lblstatus.setText('Cliente inexistente')
         except Exception as error:
             print('Error:%s' % str(error))
 
@@ -224,7 +231,6 @@ class Clientes:
     def reloadCli(self):
         try:
             Clientes.limpiarTodo(self)
-            Clientes.cargarCliente(self)
             conexion.Conexion.mostrarClientes(self)
             var.ui.lblstatus.setText('Datos recargados')
         except Exception as error:
