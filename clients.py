@@ -192,6 +192,7 @@ class Clientes:
             var.ui.ltDNI.setText(fila[0])
             conexion.Conexion.mostrarClientes2(self)
             events.Eventos.valido(self)
+            var.ui.lblstatus.setText('Cliente cargado')
         except Exception as error:
             print('Error:%s' % str(error))
 

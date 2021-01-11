@@ -47,8 +47,8 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>10</y>
+      <x>130</x>
+      <y>0</y>
       <width>991</width>
       <height>811</height>
      </rect>
@@ -69,7 +69,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(170, 255, 255, 100)</string>
+     <string notr="true">background-color:rgba(170, 255, 255, 30);</string>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -158,10 +158,10 @@ boder-color:rgb(0, 0, 0);</string>
        <enum>Qt::ElideRight</enum>
       </property>
       <attribute name="horizontalHeaderVisible">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
       <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>250</number>
@@ -179,7 +179,7 @@ boder-color:rgb(0, 0, 0);</string>
        <bool>true</bool>
       </attribute>
       <attribute name="verticalHeaderVisible">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
       <attribute name="verticalHeaderCascadingSectionResizes">
        <bool>true</bool>
@@ -1047,15 +1047,422 @@ boder-color:rgb(0, 0, 0);</string>
        </item>
       </layout>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_6">
-     <attribute name="title">
-      <string>Facturación</string>
-     </attribute>
+     <widget class="QPushButton" name="btnInforme">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>460</y>
+        <width>99</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Informe</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Productos</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>140</y>
+        <width>401</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="2" column="0">
+        <widget class="QLabel" name="lblNombrePro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nombre:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLabel" name="lblValido_2">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::AutoText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="11">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>140</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblPrecioU">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Precio-unidad:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2">
+        <widget class="QLabel" name="lblCodPro_3">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Codigo:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" rowspan="2" colspan="8">
+        <widget class="QLabel" name="lblCodPro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.602273, y1:0.5, x2:0.614, y2:0.113636, stop:0 rgba(0, 255, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="11">
+        <widget class="QLineEdit" name="ltNombrePro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="9" rowspan="2">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="1" colspan="11">
+        <widget class="QLineEdit" name="ltPrecioPro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="10">
+        <widget class="QPushButton" name="btnRecargar_2">
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/reload.jpg</normaloff>img/reload.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>290</y>
+        <width>401</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="btnAlta_2">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Alta</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEliminar_2">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Baja</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnModificar_2">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Modificar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLimpiar_2">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Limpiar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSalir_2">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Salir</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="lblTitulo_3">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>340</y>
+        <width>250</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:qlineargradient(spread:reflect, x1:0.869409, y1:0.586, x2:0.852045, y2:0.046, stop:0 rgba(88, 255, 255, 255), stop:1 rgba(221, 255, 255, 255))</string>
+      </property>
+      <property name="text">
+       <string>LISTA PRODUCTOS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTitulo_4">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>50</y>
+        <width>250</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:qlineargradient(spread:reflect, x1:0.869409, y1:0.586, x2:0.852045, y2:0.046, stop:0 rgba(88, 255, 255, 255), stop:1 rgba(221, 255, 255, 255))</string>
+      </property>
+      <property name="text">
+       <string>GESTIÓN PRODUCTOS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tablePro">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>410</y>
+        <width>761</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255);
+gridline-color:rgb(0, 0, 0);
+boder-color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>250</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>CODIGO</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NOMBRE</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PRECIO-UNIDAD</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Facturación</string>
      </attribute>
     </widget>
    </widget>
@@ -1103,10 +1510,17 @@ boder-color:rgb(0, 0, 0);</string>
      <string>Navegar</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuEditar"/>
    <addaction name="menuVer"/>
    <addaction name="menuNavegar"/>
+   <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -1183,17 +1597,22 @@ boder-color:rgb(0, 0, 0);</string>
     <string>Imprimir</string>
    </property>
   </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="img/calendar.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtSex"/>
   <buttongroup name="grpbtnPay">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtSex"/>
  </buttongroups>
 </ui>

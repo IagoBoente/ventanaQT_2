@@ -46,3 +46,4 @@ class Ui_btnBoxAccion(object):
         btnBoxAccion.setWindowTitle(_translate("btnBoxAccion", "Dialog"))
         self.lblMenAccion.setText(_translate("btnBoxAccion", "¿Está seguro de querer realizar esta acción?"))
 import avisoAccion_rc
+import avisoSalir_rc

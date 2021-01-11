@@ -1,3 +1,5 @@
+from builtins import str
+
 from PyQt5 import QtWidgets, QtSql
 
 import clients
@@ -160,4 +162,75 @@ class Conexion():
                 var.ui.lblstatus.setText('Cliente con dni: ' + dni + ' encontrado')
         else:
             print("Error mostrar cliente:", query.lastError().text())
+
+    def cargarPro(producto):
+        query = QtSql.QSqlQuery()
+        query.prepare(
+            'insert into articulos (nombre ,preciounidad)'
+            'VALUES (:nombre, :preciounidad)')
+        query.bindValue(':nombre', str(producto[0]))
+        query.bindValue(':preciounidad', str(producto[1]))
+
+        var.ui.tablePro.setRowCount(1)
+
+        if query.exec_():
+            print("Inserción Correcta")
+            var.ui.lblstatus.setText('Producto con nombre ' + producto[0] + ' dado de alta')
+        else:
+            print("Error: ", query.lastError().text())
+            var.ui.lblstatus.setText('Inserción fallida, pruebe a introducir datos de nuevo comprobando que el nombre no sea repetido.')
+        clients.Clientes.limpiarTodo(None)
+        Conexion.mostrarProductos(None)
+
+    def bajaPro(nombre):
+        query = QtSql.QSqlQuery()
+        query.prepare('delete from articulos where nombre = :nombre')
+        query.bindValue(':nombre', nombre)
+        if query.exec_():
+            print('Baja producto')
+            var.ui.lblstatus.setText('Producto con nombre ' + nombre + ' dado de baja')
+        else:
+            print(("Error al dar de baja productos:", query.lastError().text()))
+
+    def mostrarProductos(self):
+        index = 0
+        query = QtSql.QSqlQuery()
+        query.prepare('select codigo , nombre, preciounidad from articulos')
+        if query.exec_():
+            while query.next():
+                codigo = query.value(0)
+                nombre = query.value(1)
+                preciounidad = query.value(2)
+                var.ui.tablePro.setRowCount(index + 1)
+                var.ui.tablePro.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
+                var.ui.tablePro.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
+                var.ui.tablePro.setItem(index, 2, QtWidgets.QTableWidgetItem(preciounidad))
+                index += 1
+        else:
+            print("Error mostrar productos:", query.lastError().text())
+
+    def mostrarProductos2(self):
+        nombre = var.ui.ltNombrePro.text()
+        query = QtSql.QSqlQuery()
+        query.prepare('select * from articulos where nombre =:nombre')
+        query.bindValue(':nombre', nombre)
+        if query.exec_():
+            while query.next():
+                var.ui.lblCodPro.setText(str(query.value(0)))
+                var.ui.ltNombrePro.setText(str(query.value(1)))
+                var.ui.ltPrecioPro.setText(str(query.value(2)))
+
+    def modifPro(codigo, newdata):
+        query = QtSql.QSqlQuery()
+        codigo = int(codigo)
+        query.prepare('update articulos set nombre=:nombre, preciounidad=:preciounidad where codigo =:codigo')
+        query.bindValue(':codigo',int(codigo))
+        query.bindValue(':nombre', str(newdata[0]))
+        query.bindValue(':preciounidad', str(newdata[1]))
+
+        if query.exec_():
+            print("Modificacion Correcta")
+            var.ui.lblstatus.setText('Producto con nombre: ' + str(newdata[0]) + ' modificado')
+        else:
+            print("Error: ", query.lastError().text())
 

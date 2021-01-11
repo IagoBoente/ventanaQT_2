@@ -35,6 +35,16 @@ class Eventos:
                 event.ignore()  # necesario para que ignore X de la ventana
             var.avisoAccion.hide()
             return aviso
+        except Exception as error:
+            print('Error: %s' % str(error))
+
+    def avisoAbout(event):
+        try:
+            var.mensAbout.show()
+            if var.mensAbout.exec_():
+                aviso = True
+            var.mensAbout.hide()
+            return aviso
 
         except Exception as error:
             print('Error: %s' % str(error))
