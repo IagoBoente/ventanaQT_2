@@ -1,8 +1,8 @@
 import threading, time
 
-import var
-import sys
-import clients
+from PyQt5 import QtSql,QtWidgets
+
+import sys, var, clients, conexion, zipfile, os, shutil
 from datetime import datetime, date
 
 
@@ -72,6 +72,20 @@ class Eventos:
         except Exception as error:
             print('Error: %s' % str(error))
 
+    def cargarArt(self):
+        try:
+            var.cbArticulo.clear()
+            query = QtSql.QSqlQuery()
+            var.cbArticulo.addItem('')
+            query.prepare('select nombre from articulos')
+            if query.exec_():
+                while query.next():
+                    var.cbArticulo.addItem(str(query.value(0)))
+            else:
+                print("Error cargar articulos de la bd:", query.lastError().text())
+        except Exception as error:
+            print('Error cargar articulos: %s' % str(error))
+
     def AbrirDir(self):
         try:
             var.filedlgabrir.show()
@@ -88,3 +102,27 @@ class Eventos:
             var.ui.lblstatus_2.setText(current_date)
         except Exception as error:
             print('Error abrir explorador: %s' % str(error))
+
+    def AbrirPrinter(self):
+        try:
+            var.dlgImprimir.setWindowTitle('Imprimir')
+            var.dlgImprimir.setModal(True)
+            var.dlgImprimir.show()
+        except Exception as error:
+            print('Error abrir imprimr: %s ' % str(error))
+
+    def Backup(self):
+        try:
+            fecha = datetime.today()
+            fecha = fecha.strftime('%Y.%m.%d.%H.%M.%S')
+            var.copia = (str(fecha) + '_backup.zip')
+            option = QtWidgets.QFileDialog.Options()
+            directorio, filename = var.filedlgabrir.getSaveFileName(None,'Guardar Copia',var.copia,'.zip',options=option)
+            if var.filedlgabrir.Accepted and filename != '':
+                fichzip = zipfile.ZipFile(var.copia, 'w')
+                fichzip.write(var.filebd, os.path.basename(var.filebd), zipfile.ZIP_DEFLATED)
+                fichzip.close()
+                var.ui.lblstatus.setText('COPIA DE SEGURIDAD DE BASE DE DATOS CREADA')
+                shutil.move(str(var.copia), str(directorio))
+        except Exception as error:
+            print('Error: %s' % str(error))

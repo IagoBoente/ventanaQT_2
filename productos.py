@@ -12,15 +12,15 @@ class Productos:
             try:
                 newpro = []
                 tablePro = []  # sera lo que cargamos en la table
-                producto = [var.ui.ltNombrePro, var.ui.ltPrecioPro]
+                producto = [var.ui.ltNombrePro, var.ui.ltPrecioPro, var.ui.ltStock]
                 k = 0
                 for i in producto:
                     newpro.append(i.text())  # cargamos los valores que hay en los editline
-                    if k < 2:
+                    if k < 3:
                         tablePro.append(i.text())
                         k += 1
                 if producto:
-                    row = 0  # posicion de la fila, problrma: coloca al ultimo como primero en cada click
+                    row = 0  # posicion de la fila, problema: coloca al ultimo como primero en cada click
                     column = 0  # posicion de la columna
                     var.ui.tablePro.insertRow(row)  # insertamos una fila nueva con cada click de boton
                     for registro in tablePro:
@@ -39,13 +39,14 @@ class Productos:
             var.ui.lblstatus.setText('Faltan datos')
 
     def limpiarPro(self):
-        producto = [var.ui.ltNombrePro, var.ui.ltPrecioPro]
+        producto = [var.ui.ltNombrePro, var.ui.ltPrecioPro, var.ui.ltStock]
         try:
             for i in range(len(producto)):
                 producto[i].setText('')
 
             var.ui.lblstatus.setText('')
             var.ui.lblCodPro.setText('')
+            var.ui.lblStock.setText('')
 
             # var.ui.tablePro.removeRow(0)
 
@@ -53,13 +54,15 @@ class Productos:
             print('Error:%s' % str(error))
 
     def limpiarTodo(self):
-        producto = [var.ui.ltNombrePro, var.ui.ltPrecioPro]
+        producto = [var.ui.ltNombrePro, var.ui.ltPrecioPro, var.ui.ltStock]
         try:
             for i in range(len(producto)):
                 producto[i].setText('')
 
             var.ui.lblstatus.setText('')
             var.ui.lblCodPro.setText('')
+            var.ui.lblStock.setText('')
+
             var.ui.tablePro.setRowCount(0)
 
         except Exception as error:

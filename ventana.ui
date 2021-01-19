@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1108</width>
+    <width>1173</width>
     <height>907</height>
    </rect>
   </property>
@@ -72,7 +72,7 @@
      <string notr="true">background-color:rgba(170, 255, 255, 30);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_5">
      <property name="styleSheet">
@@ -313,12 +313,28 @@ boder-color:rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>840</x>
-        <y>500</y>
+        <y>470</y>
         <width>101</width>
-        <height>231</height>
+        <height>281</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="btnInformeCli">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Informe</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="btnAlta">
          <property name="font">
@@ -1047,28 +1063,6 @@ boder-color:rgb(0, 0, 0);</string>
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="btnInforme">
-      <property name="geometry">
-       <rect>
-        <x>840</x>
-        <y>460</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Tahoma</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
-      </property>
-      <property name="text">
-       <string>Informe</string>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1077,13 +1071,41 @@ boder-color:rgb(0, 0, 0);</string>
      <widget class="QWidget" name="layoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>140</y>
-        <width>401</width>
-        <height>100</height>
+        <x>200</x>
+        <y>120</y>
+        <width>588</width>
+        <height>156</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblPrecioU">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Precio-unidad:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="11">
+        <widget class="QLineEdit" name="ltNombrePro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="0">
         <widget class="QLabel" name="lblNombrePro">
          <property name="font">
@@ -1122,53 +1144,7 @@ boder-color:rgb(0, 0, 0);</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="11">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>140</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="lblPrecioU">
-         <property name="font">
-          <font>
-           <family>Tahoma</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Precio-unidad:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" rowspan="2">
-        <widget class="QLabel" name="lblCodPro_3">
-         <property name="font">
-          <font>
-           <family>Tahoma</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Codigo:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" rowspan="2" colspan="8">
+       <item row="1" column="1" colspan="8">
         <widget class="QLabel" name="lblCodPro">
          <property name="font">
           <font>
@@ -1183,48 +1159,6 @@ boder-color:rgb(0, 0, 0);</string>
          </property>
          <property name="text">
           <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="11">
-        <widget class="QLineEdit" name="ltNombrePro">
-         <property name="font">
-          <font>
-           <family>Tahoma</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:rgb(255, 255, 255)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="9" rowspan="2">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="1" colspan="11">
-        <widget class="QLineEdit" name="ltPrecioPro">
-         <property name="font">
-          <font>
-           <family>Tahoma</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:rgb(255, 255, 255)</string>
          </property>
         </widget>
        </item>
@@ -1251,18 +1185,122 @@ boder-color:rgb(0, 0, 0);</string>
          </property>
         </widget>
        </item>
+       <item row="3" column="1" colspan="11">
+        <widget class="QLineEdit" name="ltPrecioPro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblStock">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Stock</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" colspan="11">
+        <widget class="QLineEdit" name="ltStock">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lblCodPro_3">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Codigo:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="9">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="11">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>140</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="layoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>221</x>
         <y>290</y>
-        <width>401</width>
+        <width>531</width>
         <height>29</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="btnInformePro">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 255)</string>
+         </property>
+         <property name="text">
+          <string>Informe</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="btnAlta_2">
          <property name="font">
@@ -1348,7 +1386,7 @@ boder-color:rgb(0, 0, 0);</string>
      <widget class="QLabel" name="lblTitulo_3">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>370</x>
         <y>340</y>
         <width>250</width>
         <height>40</height>
@@ -1375,7 +1413,7 @@ boder-color:rgb(0, 0, 0);</string>
      <widget class="QLabel" name="lblTitulo_4">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>370</x>
         <y>50</y>
         <width>250</width>
         <height>40</height>
@@ -1402,9 +1440,9 @@ boder-color:rgb(0, 0, 0);</string>
      <widget class="QTableWidget" name="tablePro">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>90</x>
         <y>410</y>
-        <width>761</width>
+        <width>811</width>
         <height>321</height>
        </rect>
       </property>
@@ -1420,8 +1458,13 @@ boder-color:rgb(0, 0, 0);</string>
        <bool>true</bool>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>250</number>
+       <number>200</number>
       </attribute>
+      <row>
+       <property name="text">
+        <string/>
+       </property>
+      </row>
       <column>
        <property name="text">
         <string>CODIGO</string>
@@ -1458,12 +1501,651 @@ boder-color:rgb(0, 0, 0);</string>
         </font>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>STOCK</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_6">
      <attribute name="title">
       <string>Facturación</string>
      </attribute>
+     <widget class="QTableWidget" name="tableFac">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>211</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255);
+gridline-color:rgb(0, 0, 0);
+boder-color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>0</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>NºFactura</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Fecha</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTableWidget" name="tableVenta">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>140</y>
+        <width>611</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255);
+gridline-color:rgb(0, 0, 0);
+boder-color:rgb(0, 0, 0);</string>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>120</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>0</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Cod.Venta</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Articulo</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Cantidad</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Precio-Unidad</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Subtotal</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="lblCodFact">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>50</y>
+        <width>51</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.602273, y1:0.5, x2:0.614, y2:0.113636, stop:0 rgba(0, 255, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBuscar_2">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>100</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/search.png</normaloff>img/search.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCalendar_2">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>50</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnRecargar_3">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>100</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/reload.jpg</normaloff>img/reload.jpg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltCalendar_2">
+      <property name="geometry">
+       <rect>
+        <x>396</x>
+        <y>56</y>
+        <width>181</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFechaFact">
+      <property name="geometry">
+       <rect>
+        <x>269</x>
+        <y>50</y>
+        <width>121</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Fecha factura:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFechaFact_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>141</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Numero factura:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltCodCli">
+      <property name="geometry">
+       <rect>
+        <x>117</x>
+        <y>100</y>
+        <width>141</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="tabletTracking">
+       <bool>false</bool>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCliente">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cliente:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ltNombreCli">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>100</y>
+        <width>230</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="tabletTracking">
+       <bool>false</bool>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnFacturar">
+      <property name="geometry">
+       <rect>
+        <x>661</x>
+        <y>60</y>
+        <width>83</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Facturar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAnular">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>60</y>
+        <width>83</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Anular</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnConfirmar">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>100</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/confirmar.jpg</normaloff>img/confirmar.jpg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCancelar">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>100</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/cancelar.png</normaloff>img/cancelar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbliva">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>681</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>IVA:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTotal">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>720</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TOTAL:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSubtotal">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>642</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Subtotal:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFactTotal">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>719</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.602273, y1:0.5, x2:0.614, y2:0.113636, stop:0 rgba(0, 255, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFactSubtotal">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>641</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.602273, y1:0.5, x2:0.614, y2:0.113636, stop:0 rgba(0, 255, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFactIVA">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>680</y>
+        <width>81</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.602273, y1:0.5, x2:0.614, y2:0.113636, stop:0 rgba(0, 255, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -1472,7 +2154,7 @@ boder-color:rgb(0, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1108</width>
+     <width>1173</width>
      <height>29</height>
     </rect>
    </property>
@@ -1516,11 +2198,20 @@ boder-color:rgb(0, 0, 0);</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuInformes">
+    <property name="title">
+     <string>Informes</string>
+    </property>
+    <addaction name="actionClientes"/>
+    <addaction name="actionProductos"/>
+    <addaction name="actionFacturas"/>
+   </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuEditar"/>
    <addaction name="menuVer"/>
    <addaction name="menuNavegar"/>
    <addaction name="menuAyuda"/>
+   <addaction name="menuInformes"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -1537,6 +2228,7 @@ boder-color:rgb(0, 0, 0);</string>
    <addaction name="toolbarAbrir"/>
    <addaction name="toolbarSalir"/>
    <addaction name="toolbarImprimir"/>
+   <addaction name="toolbarBackup"/>
   </widget>
   <action name="actionSalir_2">
    <property name="text">
@@ -1600,6 +2292,33 @@ boder-color:rgb(0, 0, 0);</string>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="actionProductos">
+   <property name="text">
+    <string>Productos</string>
+   </property>
+  </action>
+  <action name="actionFacturas">
+   <property name="text">
+    <string>Facturas</string>
+   </property>
+  </action>
+  <action name="toolbarBackup">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/backup.png</normaloff>img/backup.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="toolTip">
+    <string>Backup</string>
    </property>
   </action>
  </widget>

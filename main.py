@@ -4,6 +4,8 @@ import conexion
 import events
 import productos
 import var
+import printer
+import ventas
 from datetime import datetime, date
 from ventana import *
 from ventanaSalir import *
@@ -11,6 +13,7 @@ from ventanaAviso import *
 from ventanaAbout import *
 from vencalendar import *
 from PyQt5.QtWidgets import QGridLayout, QWidget, QDesktopWidget
+from PyQt5 import QtPrintSupport
 import locale
 
 locale.setlocale(locale.LC_ALL, 'es-ES')
@@ -29,6 +32,8 @@ class Main(QtWidgets.QMainWindow):
         var.mensAbout = DialogAbout()
         var.dlgcalendar = DialogCalendar()
         var.filedlgabrir = FileDialogAbrir()
+        var.dlgImprimir = PrintDialogAbrir()
+        var.cmbventa = QtWidgets.QComboBox()
 
         '''Centrar ventana'''
         fg = var.ui.tabWidget.frameGeometry()
@@ -43,7 +48,7 @@ class Main(QtWidgets.QMainWindow):
         var.rbtsex = (var.ui.rbtFemenino, var.ui.rbtMasculino)
         var.chkpago = (var.ui.chkEfectivo, var.ui.chkTarjeta, var.ui.chkTransfer)
 
-        '''acciones'''
+        '''acciones_Clientes-Eventos'''
         var.ui.actionSalir_2.triggered.connect(events.Eventos.salir)
         var.ui.btnSalir.clicked.connect(events.Eventos.salir)
         var.ui.toolbarSalir.triggered.connect(events.Eventos.salir)
@@ -57,8 +62,10 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnRecargar.clicked.connect(clients.Clientes.reloadCli)
         var.ui.toolbarAbrir.triggered.connect(events.Eventos.AbrirDir)
         var.ui.actionAbrir.triggered.connect(events.Eventos.AbrirDir)
+        var.ui.toolbarBackup.triggered.connect(events.Eventos.Backup)
+        var.ui.toolbarImprimir.triggered.connect(events.Eventos.AbrirPrinter)
 
-        '''acciones_2'''
+        '''acciones_Productos'''
         var.ui.btnAlta_2.clicked.connect(productos.Productos.altaProductos)
         var.ui.btnEliminar_2.clicked.connect(productos.Productos.bajaproductos)
         var.ui.btnLimpiar_2.clicked.connect(productos.Productos.limpiarTodo)
@@ -66,6 +73,21 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnRecargar_2.clicked.connect(productos.Productos.reloadPro)
         var.ui.btnModificar_2.clicked.connect(productos.Productos.modifproductos)
         var.ui.actionAbout.triggered.connect(events.Eventos.avisoAbout)
+
+        'acciones_Informes'
+        var.ui.btnInformeCli.clicked.connect(printer.Printer.reportCli)
+        var.ui.btnInformePro.clicked.connect(printer.Printer.reportPro)
+
+        'acciones_Facturas'
+        var.ui.btnFacturar.clicked.connect(ventas.Ventas.altaFactura)
+        var.ui.btnBuscar_2.clicked.connect(conexion.Conexion.mostrarFacturascli)
+        var.ui.btnRecargar_3.clicked.connect(conexion.Conexion.mostrarFacturas)
+        var.ui.btnCalendar_2.clicked.connect(ventas.Ventas.abrirCalendar)
+        var.ui.btnAnular.clicked.connect(ventas.Ventas.borrarFactura)
+        var.ui.btnConfirmar.clicked.connect(ventas.Ventas.procesoVenta)
+        var.ui.btnCancelar.clicked.connect(ventas.Ventas.anularVenta)
+
+        # events.Eventos.cargarArt(self)
 
         for i in var.rbtsex:
             i.toggled.connect(clients.Clientes.selSexo)
@@ -76,9 +98,20 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tableCli.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tablePro.clicked.connect(productos.Productos.cargarproductos)
         var.ui.tablePro.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tableFac.clicked.connect(ventas.Ventas.cargarFact)
+        var.ui.tableFac.clicked.connect(ventas.Ventas.mostrarVentasfac)
+        var.ui.tableFac.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        #var.ui.tableVenta.clicked.connect()
+        var.ui.tableVenta.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
         conexion.Conexion.db_connect(var.filebd)
         conexion.Conexion.mostrarClientes(self)
         conexion.Conexion.mostrarProductos(self)
+        conexion.Conexion.mostrarFacturas(self)
+        var.cmbventa = QtWidgets.QComboBox()
+        ventas.Ventas.prepararTablaventas(0)
+        conexion.Conexion.cargarCmbventa(CmbVenta)
+        var.ui.tabWidget.setCurrentIndex(0)
 
         '''Llamada a modulos iniciales'''
         var.ui.statusbar.addPermanentWidget(var.ui.lblstatus, 20)
@@ -119,7 +152,7 @@ class DialogCalendar(QtWidgets.QDialog):
         anoactual = datetime.now().year
         var.dlgcalendar.calendar_2.setSelectedDate((QtCore.QDate(anoactual, mesactual, diaactual)))
         var.dlgcalendar.calendar_2.clicked.connect(clients.Clientes.cargarFecha)
-
+        var.dlgcalendar.calendar_2.clicked.connect(ventas.Ventas.cargarFechafac)
 
 class DialogAbout(QtWidgets.QDialog):
     def __init__(self):
@@ -132,6 +165,17 @@ class DialogAbout(QtWidgets.QDialog):
 class FileDialogAbrir(QtWidgets.QFileDialog):
     def __init__(self):
         super(FileDialogAbrir, self).__init__()
+
+
+class PrintDialogAbrir(QtPrintSupport.QPrintDialog):
+    def __init__(self):
+        super(PrintDialogAbrir, self).__init__()
+
+
+class CmbVenta(QtWidgets.QComboBox):
+    def __init__(self):
+        super(CmbVenta, self).__init__()
+        var.cmbventa = QtWidgets.QComboBox()
 
 
 if __name__ == '__main__':
