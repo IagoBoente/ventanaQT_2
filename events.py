@@ -1,6 +1,6 @@
 import threading, time
 
-from PyQt5 import QtSql,QtWidgets
+from PyQt5 import QtSql, QtWidgets
 
 import sys, var, clients, conexion, zipfile, os, shutil
 from datetime import datetime, date
@@ -8,13 +8,16 @@ from datetime import datetime, date
 
 class Eventos:
 
-    def saludo(self):
-        try:
-            var.ui.lblstatus.setText('Surprise ¡¡')
-        except Exception as error:
-            print('Error: %s' % str(error))
-
     def salir(event):
+        """
+
+        Módulo para cerrar el programa
+
+        :return: None
+
+        Muestra ventana de aviso
+
+        """
         try:
             var.avisoSalir.show()
             if var.avisoSalir.exec_():
@@ -26,6 +29,16 @@ class Eventos:
             print('Error: %s' % str(error))
 
     def avisoAccion(event):
+        """
+
+        Módulo que abre ventana de aviso
+
+        :param: men Mensaje de aviso
+        :type: string
+        :return: None
+        :rtype: None
+
+        """
         try:
             var.avisoAccion.show()
             if var.avisoAccion.exec_():
@@ -39,6 +52,16 @@ class Eventos:
             print('Error: %s' % str(error))
 
     def avisoAbout(event):
+        """
+
+        Módulo que abre la ventana About
+
+        :param: men Mensaje about
+        :type: string
+        :return: None
+        :rtype: None
+
+        """
         try:
             var.mensAbout.show()
             if var.mensAbout.exec_():
@@ -50,6 +73,15 @@ class Eventos:
             print('Error: %s' % str(error))
 
     def valido(self):
+        """
+
+        Modulo que según sea correcto el dni o no, muestra una imagen distinta
+
+        :return: none
+
+        Si es falso escribe en el label una cruz roja si es true devuelve una V verda
+
+        """
         try:
             dni = var.ui.ltDNI.text()
             if clients.Clientes.validardni(dni):
@@ -65,6 +97,15 @@ class Eventos:
             print('Error: %s' % str(error))
 
     def cargarProv(self):
+        """
+
+        Módulo que se ejecuta al principio para cargar las provincias. En versión posterior cargaremos
+        y municipios desde la BBDD.
+
+        :return: None
+        :rtype: None
+
+        """
         try:
             prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
             for i in prov:
@@ -73,6 +114,14 @@ class Eventos:
             print('Error: %s' % str(error))
 
     def cargarArt(self):
+        """
+
+        Módulo que se ejecuta al principio para cargar los articulos.
+
+        :return: None
+        :rtype: None
+
+        """
         try:
             var.cbArticulo.clear()
             query = QtSql.QSqlQuery()
@@ -87,12 +136,27 @@ class Eventos:
             print('Error cargar articulos: %s' % str(error))
 
     def AbrirDir(self):
+        """
+
+        Módulo que abre una ventana de diálogo
+
+        :return: None
+        :rtype: None
+
+        """
         try:
             var.filedlgabrir.show()
         except Exception as error:
             print('Error abrir explorador: %s' % str(error))
 
     def MostrarFecha(self):
+        """
+
+        Modulo que carga la fecha actual
+
+        :return: none
+
+        """
         try:
             now = datetime.now()
             today = date.today()
@@ -104,6 +168,14 @@ class Eventos:
             print('Error abrir explorador: %s' % str(error))
 
     def AbrirPrinter(self):
+        """
+
+        Módulo que abre la ventana de diálogo de la impresora
+
+        :return: None
+        :rtype: None
+
+        """
         try:
             var.dlgImprimir.setWindowTitle('Imprimir')
             var.dlgImprimir.setModal(True)
@@ -112,12 +184,24 @@ class Eventos:
             print('Error abrir imprimr: %s ' % str(error))
 
     def Backup(self):
+        """
+
+        Módulo que realizar el backup de la BBDD
+
+        :return: None
+        :rtype: None
+
+        Utiliza la librería zipfile, añade la fecha y hora de la copia al nombre de esta y tras realizar la copia
+        la mueve al directorio deseado por el cliente. Para ello abre una ventana de diálogo
+
+        """
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y.%m.%d.%H.%M.%S')
             var.copia = (str(fecha) + '_backup.zip')
             option = QtWidgets.QFileDialog.Options()
-            directorio, filename = var.filedlgabrir.getSaveFileName(None,'Guardar Copia',var.copia,'.zip',options=option)
+            directorio, filename = var.filedlgabrir.getSaveFileName(None, 'Guardar Copia', var.copia, '.zip',
+                                                                    options=option)
             if var.filedlgabrir.Accepted and filename != '':
                 fichzip = zipfile.ZipFile(var.copia, 'w')
                 fichzip.write(var.filebd, os.path.basename(var.filebd), zipfile.ZIP_DEFLATED)
@@ -126,3 +210,34 @@ class Eventos:
                 shutil.move(str(var.copia), str(directorio))
         except Exception as error:
             print('Error: %s' % str(error))
+
+    def restaurarBD(self):
+        """
+
+        Módulo que restaura la BBDD
+
+        :return: None
+        :rtype: None
+
+        Abre ventana de diálogo para buscar el directorio donde está copia de la BBDD y la restaura haciendo suo
+        de la librería zipfile
+        Muestra mensaje de confirmación
+
+        """
+        try:
+            option = QtWidgets.QFileDialog.Options()
+            filename = var.filedlgabrir.getOpenFileName(None, 'Restaurar copia de seguridad','','*.zip;;All Files',
+                                                        options=option)
+            if var.filedlgabrir.Accepted and filename != '':
+                file = filename[0]
+                with zipfile.ZipFile(str(file), 'r') as bbdd:
+                    # bbdd = zipfile.ZipFile(str(filename[0]), 'r')
+                    bbdd.extractall(pwd=None)
+                bbdd.close()
+                conexion.Conexion.db_connect(var.filebd)
+                conexion.Conexion.mostrarClientes(self)
+                conexion.Conexion.mostrarProductos(self)
+                conexion.Conexion.mostrarFacturas(self)
+
+        except Exception as error:
+            print('Error restaurar base de datos: %s' % str(error))

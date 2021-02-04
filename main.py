@@ -22,7 +22,22 @@ locale.setlocale(locale.LC_ALL, 'es-ES')
 class Main(QtWidgets.QMainWindow):
 
     def __init__(self):
+        """
+
+        Clase que instancia todas las ventanas del programa .
+        Genera y conecta todos los eventos de los botones , tablas y otros widgets.
+        Cuendo se lanza se conecta con la base de datos.
+        Carga todos los articulos , facturas y clientes de la BBDD en las ventanas
+        correspondientes.
+
+        """
+
         super(Main, self).__init__()
+        '''
+        
+        
+        
+        '''
         var.ui = Ui_Proyecto1()
         var.ui.setupUi(self)
 
@@ -64,6 +79,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionAbrir.triggered.connect(events.Eventos.AbrirDir)
         var.ui.toolbarBackup.triggered.connect(events.Eventos.Backup)
         var.ui.toolbarImprimir.triggered.connect(events.Eventos.AbrirPrinter)
+        var.ui.toolbarRestaurar.triggered.connect(events.Eventos.restaurarBD)
 
         '''acciones_Productos'''
         var.ui.btnAlta_2.clicked.connect(productos.Productos.altaProductos)
@@ -76,7 +92,10 @@ class Main(QtWidgets.QMainWindow):
 
         'acciones_Informes'
         var.ui.btnInformeCli.clicked.connect(printer.Printer.reportCli)
+        var.ui.actionClientes.triggered.connect(printer.Printer.reportCli)
+        var.ui.actionProductos.triggered.connect(printer.Printer.reportPro)
         var.ui.btnInformePro.clicked.connect(printer.Printer.reportPro)
+        var.ui.btnInformeFac.clicked.connect(printer.Printer.reportFac)
 
         'acciones_Facturas'
         var.ui.btnFacturar.clicked.connect(ventas.Ventas.altaFactura)
@@ -101,7 +120,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tableFac.clicked.connect(ventas.Ventas.cargarFact)
         var.ui.tableFac.clicked.connect(ventas.Ventas.mostrarVentasfac)
         var.ui.tableFac.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
-        #var.ui.tableVenta.clicked.connect()
         var.ui.tableVenta.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         conexion.Conexion.db_connect(var.filebd)
@@ -109,7 +127,6 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.mostrarProductos(self)
         conexion.Conexion.mostrarFacturas(self)
         var.cmbventa = QtWidgets.QComboBox()
-        ventas.Ventas.prepararTablaventas(0)
         conexion.Conexion.cargarCmbventa(CmbVenta)
         var.ui.tabWidget.setCurrentIndex(0)
 
@@ -126,6 +143,11 @@ class Main(QtWidgets.QMainWindow):
 
 
 class DialogSalir(QtWidgets.QDialog):
+    """
+
+    Clase que instancia la ventana de aviso al salir
+
+    """
     def __init__(self):
         super(DialogSalir, self).__init__()
         var.avisoSalir = Ui_btnBox()
@@ -134,6 +156,11 @@ class DialogSalir(QtWidgets.QDialog):
 
 
 class DialogAccion(QtWidgets.QDialog):
+    """
+
+    Clase que instancia la ventana de aviso de accion
+
+    """
     def __init__(self):
         super(DialogAccion, self).__init__()
         var.avisoAccion = Ui_btnBoxAccion()
@@ -143,6 +170,11 @@ class DialogAccion(QtWidgets.QDialog):
 
 
 class DialogCalendar(QtWidgets.QDialog):
+    """
+
+    Clase que instancia la ventana del calendario
+
+    """
     def __init__(self):
         super(DialogCalendar, self).__init__()
         var.dlgcalendar = Ui_calendar()
@@ -156,6 +188,11 @@ class DialogCalendar(QtWidgets.QDialog):
 
 class DialogAbout(QtWidgets.QDialog):
     def __init__(self):
+        """
+
+        Clase que instancia la ventana about
+
+        """
         super(DialogAbout, self).__init__()
         var.mensAbout = Ui_btnBoxAbout()
         var.mensAbout.setupUi(self)
@@ -164,16 +201,31 @@ class DialogAbout(QtWidgets.QDialog):
 
 class FileDialogAbrir(QtWidgets.QFileDialog):
     def __init__(self):
+        """
+
+        Clase que instancia la ventana de direcotrio
+
+        """
         super(FileDialogAbrir, self).__init__()
 
 
 class PrintDialogAbrir(QtPrintSupport.QPrintDialog):
     def __init__(self):
+        """
+
+        Clase que instancia la ventana de impresión
+
+        """
         super(PrintDialogAbrir, self).__init__()
 
 
 class CmbVenta(QtWidgets.QComboBox):
     def __init__(self):
+        """
+
+        Clase que instancia el combo de artículos
+
+        """
         super(CmbVenta, self).__init__()
         var.cmbventa = QtWidgets.QComboBox()
 
